@@ -28,7 +28,7 @@ export default function Home() {
     <section id="home" className="min-h-screen flex flex-col justify-center pt-20 pb-10 px-4 relative">
       {/* Floating Theme & Music Controls */}
       <FloatingControls />
-      
+
       <div className="container mx-auto flex-1 flex flex-col">
 
         <div className="flex-1 flex items-center">
@@ -60,7 +60,7 @@ export default function Home() {
                   sequence={[
                     'Full Stack Developer',
                     2000,
-                    'MERN Stack Expert',
+                    'AI & ML Researcher',
                     2000,
                     'Machine Learning Enthusiast',
                     2000,
@@ -177,7 +177,7 @@ export default function Home() {
                   transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                   style={{ width: 320, height: 320, margin: '-10px' }}
                 />
-                
+
                 {/* Profile Image */}
                 <motion.div
                   className="relative w-72 h-72 rounded-full overflow-hidden border-4 border-background shadow-2xl"
@@ -206,7 +206,7 @@ export default function Home() {
                   transition={{ delay: 1.4, type: 'spring' }}
                   className="absolute -bottom-2 -left-4 bg-secondary text-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg border border-primary/50"
                 >
-                  Full Stack Developer
+                  Software Developer
                 </motion.div>
               </div>
             </motion.div>

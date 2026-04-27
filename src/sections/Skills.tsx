@@ -20,7 +20,7 @@ const skillCategories = [
   {
     title: 'Cloud Platforms',
     icon: Cloud,
-    skills: ['AWS', 'GCP', 'Docker', 'Vercel', 'Render'],
+    skills: ['GCP', 'Docker', 'Kubernetes', 'Vercel', 'Render'],
   },
   {
     title: 'Developer Tools',
@@ -28,9 +28,9 @@ const skillCategories = [
     skills: ['Git', 'GitHub', 'VS Code', 'Postman', 'Eclipse', 'IntelliJ IDEA'],
   },
   {
-    title: 'Digital Marketing',
+    title: 'AI / Machine Learning',
     icon: BarChart,
-    skills: ['WordPress', 'SEO', 'Google Analytics', 'Google Ads', 'Search Console'],
+    skills: ['PyTorch', 'Computer Vision', 'NLP', 'Deep Learning', 'Transformers', 'Generative AI', 'Deepfake Detection', 'Multimodal Learning', 'LLMs'],
   },
 ];
 

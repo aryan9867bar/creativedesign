@@ -9,10 +9,31 @@ import fullstackWebImg from '@/assets/projects/fullstack-web.jpg';
 import apiPlatformImg from '@/assets/projects/api-platform.jpg';
 import rtcbridgeImg from '@/assets/projects/rtcbridge.png';
 import quickchatImg from '@/assets/projects/quickchat.png';
+import wavechatImg from '@/assets/projects/wavechat.png';
 
 const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack'];
 
 const projects = [
+  {
+    title: 'WaveChat',
+    category: 'Full Stack',
+    description: 'Scalable real-time random video chat platform inspired by Omegle, built using React, FastAPI, Redis, WebRTC, and WebSockets. Users are randomly matched through a distributed matchmaking system and connected through low-latency peer-to-peer video and chat communication.',
+    icon: Video,
+    image: wavechatImg,
+    badge: 'Live Video Chat',
+    isPremium: true,
+    highlights: [
+      'Random peer-to-peer video matching system',
+      'WebRTC video calling with ICE/STUN/TURN support',
+      'Distributed matching & signalling microservices',
+      'Real-time live chat with WebSocket communication'
+    ],
+    tech: ['React', 'TypeScript', 'FastAPI', 'Redis', 'WebSockets', 'Tailwind CSS', 'Vite', 'STOMP'],
+    date: '05/2026',
+    github: 'https://github.com/aryan9867bar/RandomVideoChat',
+    video: 'https://drive.google.com/file/d/1LxzqiAGrpDej7McVTSpZvbo0xEIIdcOp/view?usp=sharing',
+    live: 'https://wavechat-ten.vercel.app',
+  },
   {
     title: 'RTCBridge',
     category: 'Full Stack',
@@ -176,11 +197,22 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 layout
-                className="glass-card rounded-2xl overflow-hidden hover-glow group relative"
+                className={`glass-card rounded-2xl overflow-hidden hover-glow group relative ${
+                  project.isPremium 
+                    ? 'border-2 border-primary/50 shadow-[0_0_25px_rgba(234,179,8,0.25)]' 
+                    : ''
+                }`}
                 style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
+                  {project.isPremium && (
+                    <>
+                      {/* Signal-wave ripple effects */}
+                      <span className="absolute inset-0 bg-primary/5 animate-pulse pointer-events-none" />
+                      <span className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 animate-pulse pointer-events-none" />
+                    </>
+                  )}
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -189,21 +221,41 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                   
                   {/* Category Badge on Image */}
-                  <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2">
                     <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/90 text-primary-foreground backdrop-blur-sm">
                       {project.category}
                     </span>
                     {project.badge && (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full bg-emerald-500/90 text-white backdrop-blur-sm animate-pulse">
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full text-white backdrop-blur-sm animate-pulse ${
+                        project.isPremium ? 'bg-primary text-black' : 'bg-emerald-500/90'
+                      }`}>
                         <Wifi className="w-3 h-3" />
                         {project.badge}
+                      </span>
+                    )}
+                    {project.isPremium && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                        ONLINE
                       </span>
                     )}
                   </div>
                   
                   {/* Icon */}
                   <div className="absolute bottom-4 right-4 p-2 rounded-lg bg-background/80 backdrop-blur-sm text-primary">
-                    <IconComponent className="w-5 h-5" />
+                    <div className="relative flex items-center gap-1">
+                      {project.isPremium && (
+                        <span className="absolute -inset-1 rounded bg-primary/30 animate-ping pointer-events-none" />
+                      )}
+                      {project.title === 'WaveChat' ? (
+                        <>
+                          <Video className="w-4 h-4 relative z-10" />
+                          <MessageSquare className="w-4 h-4 relative z-10" />
+                        </>
+                      ) : (
+                        <IconComponent className="w-5 h-5 relative z-10" />
+                      )}
+                    </div>
                   </div>
                 </div>
 

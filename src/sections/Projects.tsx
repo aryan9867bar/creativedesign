@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi } from 'lucide-react';
+import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -8,6 +8,7 @@ import emotionDetectionImg from '@/assets/projects/emotion-detection.jpg';
 import fullstackWebImg from '@/assets/projects/fullstack-web.jpg';
 import apiPlatformImg from '@/assets/projects/api-platform.jpg';
 import rtcbridgeImg from '@/assets/projects/rtcbridge.png';
+import quickchatImg from '@/assets/projects/quickchat.png';
 
 const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack'];
 
@@ -30,6 +31,25 @@ const projects = [
     github: 'https://github.com/aryan9867bar/RTCBridge',
     video: 'https://drive.google.com/file/d/13ZH78iYqe2N2V9p4vvKpZLqKJ601CDJ7/view?usp=sharing',
     live: 'https://rtcbridge.onrender.com/',
+  },
+  {
+    title: 'QuickChat',
+    category: 'Full Stack',
+    description: 'Real-time multi-room chatting platform built with Spring Boot and WebSockets, enabling instant communication between users using STOMP messaging and SockJS fallback support for seamless cross-browser connectivity.',
+    icon: MessageSquare,
+    image: quickchatImg,
+    badge: 'Live Chat',
+    highlights: [
+      'Real-time multi-room messaging system',
+      'STOMP-based WebSocket communication',
+      'SockJS fallback for unsupported browsers',
+      'Secure and responsive chat interface'
+    ],
+    tech: ['Spring Boot', 'WebSocket', 'STOMP', 'SockJS', 'Java', 'Docker'],
+    date: '05/2026',
+    github: 'https://github.com/aryan9867bar/QuickChat',
+    video: 'https://drive.google.com/file/d/1W9O9-6sGTB7GU9AGwW6JhKq07_fVd53Z/view?usp=sharing',
+    live: 'https://quickchat-f1tn.onrender.com',
   },
   {
     title: 'E-Commerce Website Clone',

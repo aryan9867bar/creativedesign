@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -7,10 +7,30 @@ import ecommerceImg from '@/assets/projects/ecommerce.jpg';
 import emotionDetectionImg from '@/assets/projects/emotion-detection.jpg';
 import fullstackWebImg from '@/assets/projects/fullstack-web.jpg';
 import apiPlatformImg from '@/assets/projects/api-platform.jpg';
+import rtcbridgeImg from '@/assets/projects/rtcbridge.png';
 
 const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack'];
 
 const projects = [
+  {
+    title: 'RTCBridge',
+    category: 'Full Stack',
+    description: 'Scalable real-time video calling platform enabling low-latency peer-to-peer communication using WebRTC and WebSockets. Built with Spring Boot signaling architecture, STOMP messaging, STUN/TURN traversal, and secure HTTPS deployment for seamless browser-based communication.',
+    icon: Video,
+    image: rtcbridgeImg,
+    badge: 'Live RTC',
+    highlights: [
+      'Real-time peer-to-peer video & audio calling',
+      'WebSocket signaling with STOMP + SockJS',
+      'STUN/TURN integration for NAT traversal',
+      'Secure HTTPS deployment with Docker & Render'
+    ],
+    tech: ['Spring Boot', 'WebRTC', 'WebSocket', 'Java', 'STOMP', 'Docker'],
+    date: '05/2026',
+    github: 'https://github.com/aryan9867bar/RTCBridge',
+    video: 'https://drive.google.com/file/d/13ZH78iYqe2N2V9p4vvKpZLqKJ601CDJ7/view?usp=sharing',
+    live: 'https://rtcbridge.onrender.com/',
+  },
   {
     title: 'E-Commerce Website Clone',
     category: 'Full Stack',
@@ -26,6 +46,7 @@ const projects = [
     tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Stripe', 'Redux'],
     date: '01/2024',
     github: 'https://github.com/aryan9867bar',
+    video: '#',
     live: '#',
   },
   {
@@ -43,6 +64,7 @@ const projects = [
     tech: ['Python', 'PyTorch', 'OpenCV', 'Keras', 'CNN', 'NLP'],
     date: '01/2023',
     github: 'https://github.com/aryan9867bar',
+    video: '#',
     live: '#',
   },
   {
@@ -60,6 +82,7 @@ const projects = [
     tech: ['Angular.js', 'React.js', 'Node.js', 'Express.js', 'MongoDB'],
     date: '03/2021 - Present',
     github: 'https://github.com/aryan9867bar',
+    video: '#',
     live: '#',
   },
   {
@@ -77,6 +100,7 @@ const projects = [
     tech: ['React.js', 'REST APIs', 'RapidAPI', 'PostgreSQL', 'Postman'],
     date: '03/2021 - Present',
     github: 'https://github.com/aryan9867bar',
+    video: '#',
     live: '#',
   },
 ];
@@ -90,7 +114,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +145,7 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => {
             const IconComponent = project.icon;
             return (
@@ -132,7 +156,8 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 layout
-                className="glass-card rounded-2xl overflow-hidden hover-glow group"
+                className="glass-card rounded-2xl overflow-hidden hover-glow group relative"
+                style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -144,10 +169,16 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                   
                   {/* Category Badge on Image */}
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-4 left-4 flex items-center gap-2">
                     <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/90 text-primary-foreground backdrop-blur-sm">
                       {project.category}
                     </span>
+                    {project.badge && (
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full bg-emerald-500/90 text-white backdrop-blur-sm animate-pulse">
+                        <Wifi className="w-3 h-3" />
+                        {project.badge}
+                      </span>
+                    )}
                   </div>
                   
                   {/* Icon */}
@@ -197,23 +228,32 @@ export default function Projects() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 pt-4 border-t border-border/50">
+                  <div className="flex gap-2 pt-4 border-t border-border/50">
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => window.open(project.github, '_blank')}
-                      className="flex items-center gap-2 flex-1"
+                      className="flex items-center gap-1.5 flex-1 text-xs"
                     >
-                      <Github className="w-4 h-4" />
-                      View Code
+                      <Github className="w-3.5 h-3.5" />
+                      GitHub
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => window.open(project.video, '_blank')}
+                      className="flex items-center gap-1.5 flex-1 text-xs border-red-500/40 text-red-400 hover:bg-red-500/10 hover:text-red-300 hover:border-red-400/60"
+                    >
+                      <Play className="w-3.5 h-3.5 fill-current" />
+                      Video
                     </Button>
                     <Button
                       variant="default"
                       size="sm"
                       onClick={() => window.open(project.live, '_blank')}
-                      className="flex items-center gap-2 flex-1"
+                      className="flex items-center gap-1.5 flex-1 text-xs"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                       Live Demo
                     </Button>
                   </div>

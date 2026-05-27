@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare } from 'lucide-react';
+import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare, Link, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -10,6 +10,7 @@ import apiPlatformImg from '@/assets/projects/api-platform.jpg';
 import rtcbridgeImg from '@/assets/projects/rtcbridge.png';
 import quickchatImg from '@/assets/projects/quickchat.png';
 import wavechatImg from '@/assets/projects/wavechat.png';
+import snipurlImg from '@/assets/projects/snipurl.png';
 
 const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack'];
 
@@ -33,6 +34,29 @@ const projects = [
     github: 'https://github.com/aryan9867bar/RandomVideoChat',
     video: 'https://drive.google.com/file/d/1LxzqiAGrpDej7McVTSpZvbo0xEIIdcOp/view?usp=sharing',
     live: 'https://wavechat-ten.vercel.app',
+  },
+  {
+    title: 'SnipURL',
+    category: 'Full Stack',
+    description: 'High-performance distributed URL shortening platform built with FastAPI, PostgreSQL, Redis, and React. Designed for scalability and low latency using Snowflake ID generation, Base62 encoding, Redis caching, distributed locking, and async API architecture.',
+    icon: Link,
+    image: snipurlImg,
+    badge: 'Low Latency',
+    isPremium: true,
+    highlights: [
+      'Collision-free short URL generation using Snowflake IDs',
+      'Redis caching with distributed lock mechanism',
+      'Low-latency URL redirection with cache optimization',
+      'Rate-limited scalable async REST API architecture'
+    ],
+    tech: ['FastAPI', 'PostgreSQL', 'Redis', 'React', 'Docker', 'TypeScript'],
+    techLimit: 6,
+    customExtraCount: 5,
+    hiddenTech: ['SQLAlchemy', 'Base62 Encoding', 'Distributed Locking', 'Async APIs', 'Vite', 'Pydantic', 'Uvicorn', 'Tailwind CSS'],
+    date: '05/2026',
+    github: 'https://github.com/aryan9867bar/URL-Shortener',
+    video: 'https://drive.google.com/file/d/1kaHFFpjowoetw_RXkpgFhqqkG5N-alAZ/view?usp=sharing',
+    live: 'https://github.com/aryan9867bar/snipurl',
   },
   {
     title: 'RTCBridge',
@@ -213,6 +237,24 @@ export default function Projects() {
                       <span className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 animate-pulse pointer-events-none" />
                     </>
                   )}
+                  {project.title === 'SnipURL' && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+                      {/* Animated URL redirection flow */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-primary/30 shadow-[0_0_15px_rgba(234,179,8,0.25)]">
+                        <span className="text-[10px] text-muted-foreground font-mono">snip.url/xyz</span>
+                        <div className="relative flex items-center w-8">
+                          <span className="absolute left-0 text-primary font-bold text-xs animate-redirect-flow">➔</span>
+                        </div>
+                        <span className="text-[10px] text-primary font-mono font-bold">target_service</span>
+                      </div>
+
+                      {/* Cache Hit Badge */}
+                      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-emerald-500/30 text-emerald-400 text-[10px] font-mono shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                        <span className="text-[9px] font-bold">CACHE HIT (99.8% • 1.8ms)</span>
+                      </div>
+                    </div>
+                  )}
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -229,7 +271,7 @@ export default function Projects() {
                       <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full text-white backdrop-blur-sm animate-pulse ${
                         project.isPremium ? 'bg-primary text-black' : 'bg-emerald-500/90'
                       }`}>
-                        <Wifi className="w-3 h-3" />
+                        {project.title === 'SnipURL' ? <Zap className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
                         {project.badge}
                       </span>
                     )}
@@ -258,7 +300,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
-
+ 
                 <div className="p-6">
                   {/* Title and Date */}
                   <div className="flex items-start justify-between mb-3">
@@ -269,12 +311,12 @@ export default function Projects() {
                       {project.date}
                     </span>
                   </div>
-
+ 
                   {/* Description */}
                   <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
                     {project.description}
                   </p>
-
+ 
                   {/* Key Highlights */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {project.highlights.map((highlight, i) => (
@@ -284,17 +326,20 @@ export default function Projects() {
                       </div>
                     ))}
                   </div>
-
+ 
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-5">
-                    {project.tech.slice(0, 4).map((tech) => (
+                    {project.tech.slice(0, project.techLimit || 4).map((tech) => (
                       <span key={tech} className="skill-badge text-xs">
                         {tech}
                       </span>
                     ))}
-                    {project.tech.length > 4 && (
-                      <span className="skill-badge text-xs">
-                        +{project.tech.length - 4}
+                    {project.tech.length > (project.techLimit || 4) && (
+                      <span 
+                        className="skill-badge text-xs cursor-help"
+                        title={project.hiddenTech ? project.hiddenTech.join(', ') : project.tech.slice(project.techLimit || 4).join(', ')}
+                      >
+                        +{project.customExtraCount || (project.tech.length - (project.techLimit || 4))}
                       </span>
                     )}
                   </div>

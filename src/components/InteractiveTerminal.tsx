@@ -137,7 +137,6 @@ export default function InteractiveTerminal() {
               onChange={(e) => setInput(e.target.value)}
               className="flex-1 bg-transparent border-none outline-none text-foreground ml-2 font-mono"
               placeholder=""
-              autoFocus
             />
             <span className={`text-primary ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
           </form>

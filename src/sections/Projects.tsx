@@ -65,6 +65,7 @@ const projects = [
     icon: Video,
     image: rtcbridgeImg,
     badge: 'Live RTC',
+    isPremium: true,
     highlights: [
       'Real-time peer-to-peer video & audio calling',
       'WebSocket signaling with STOMP + SockJS',
@@ -84,6 +85,7 @@ const projects = [
     icon: MessageSquare,
     image: quickchatImg,
     badge: 'Live Chat',
+    isPremium: true,
     highlights: [
       'Real-time multi-room messaging system',
       'STOMP-based WebSocket communication',
@@ -102,6 +104,7 @@ const projects = [
     description: 'Full-featured e-commerce platform with Stripe payment integration, Cloudinary for image management, and Redux for state management.',
     icon: Globe,
     image: ecommerceImg,
+    isPremium: true,
     highlights: [
       'Stripe payment integration',
       'Cloudinary image management',
@@ -120,6 +123,7 @@ const projects = [
     description: 'AI/ML powered application for detecting emotions in real-time using computer vision and deep learning techniques.',
     icon: Brain,
     image: emotionDetectionImg,
+    isPremium: true,
     highlights: [
       'Real-time facial emotion detection',
       'CNN-based deep learning model',
@@ -138,6 +142,7 @@ const projects = [
     description: 'Modern responsive website built with MERN/MEAN stack, featuring RESTful APIs and MongoDB database integration.',
     icon: Code,
     image: fullstackWebImg,
+    isPremium: true,
     highlights: [
       'MERN/MEAN stack implementation',
       'RESTful API architecture',
@@ -156,6 +161,7 @@ const projects = [
     description: 'Built responsive websites using various APIs including REST APIs and RapidAPI integrations with PostgreSQL database.',
     icon: Database,
     image: apiPlatformImg,
+    isPremium: true,
     highlights: [
       'Multiple API integrations',
       'RapidAPI marketplace usage',

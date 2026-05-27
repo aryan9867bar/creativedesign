@@ -18,7 +18,7 @@ export default function InteractiveTerminal() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const cmd = input.trim().toLowerCase();
-    
+
     if (cmd === 'npm run start' || cmd === 'npm start') {
       setOutput(prev => [
         ...prev,
@@ -31,7 +31,7 @@ export default function InteractiveTerminal() {
         '➜ Navigating to Skills section...',
       ]);
       setInput('');
-      
+
       // Scroll to skills after a short delay
       setTimeout(() => {
         document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
@@ -61,7 +61,7 @@ export default function InteractiveTerminal() {
   };
 
   return (
-    <div 
+    <div
       className="terminal-window max-w-3xl mx-auto cursor-text"
       onClick={() => inputRef.current?.focus()}
     >
@@ -115,15 +115,14 @@ export default function InteractiveTerminal() {
           <p className="text-muted-foreground text-xs mb-2">
             &gt;&gt; Interactive Terminal - Type 'npm run start' and press Enter
           </p>
-          
+
           {/* Output History */}
           {output.map((line, index) => (
-            <p key={index} className={`text-sm ${
-              line.includes('✓') ? 'text-green-400' :
-              line.includes('➜') ? 'text-primary' :
-              line.startsWith('C:') ? 'text-cyan-400' :
-              'text-muted-foreground'
-            }`}>
+            <p key={index} className={`text-sm ${line.includes('✓') ? 'text-green-400' :
+                line.includes('➜') ? 'text-primary' :
+                  line.startsWith('C:') ? 'text-cyan-400' :
+                    'text-muted-foreground'
+              }`}>
               {line}
             </p>
           ))}

@@ -264,4 +264,24 @@
   .animate-redirect-flow {
     animation: redirect-flow 1.8s infinite linear;
   }
+
+  @keyframes kafka-flow {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+      text-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+    }
+    100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+  }
+
+  .animate-kafka-flow {
+    animation: kafka-flow 1.5s infinite ease-in-out;
+  }
 }

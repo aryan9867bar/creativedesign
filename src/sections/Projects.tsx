@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare, Link, Zap } from 'lucide-react';
+import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare, Link, Zap, Server, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -11,8 +11,9 @@ import rtcbridgeImg from '@/assets/projects/rtcbridge.png';
 import quickchatImg from '@/assets/projects/quickchat.png';
 import wavechatImg from '@/assets/projects/wavechat.png';
 import snipurlImg from '@/assets/projects/snipurl.png';
+import eventProcessingImg from '@/assets/projects/event-processing.png';
 
-const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack'];
+const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack', 'Backend'];
 
 const projects = [
   {
@@ -34,6 +35,29 @@ const projects = [
     github: 'https://github.com/aryan9867bar/RandomVideoChat',
     video: 'https://drive.google.com/file/d/1LxzqiAGrpDej7McVTSpZvbo0xEIIdcOp/view?usp=sharing',
     live: 'https://wavechat-ten.vercel.app',
+  },
+  {
+    title: 'Event Processing System',
+    category: 'Backend',
+    description: 'Cloud-native event-driven microservices platform built with Apache Kafka, Spring Boot, Docker, Kubernetes, and PostgreSQL. Designed to process high-volume real-time events with asynchronous communication, fault tolerance, auto-scaling, and distributed system architecture.',
+    icon: Server,
+    image: eventProcessingImg,
+    badge: 'Event Driven',
+    isPremium: true,
+    highlights: [
+      'Real-time event streaming using Apache Kafka',
+      'Producer, Consumer & Alerting microservices architecture',
+      'Kubernetes auto-scaling with Horizontal Pod Autoscalers',
+      'Cloud-ready deployment with Docker, GKE & Cloud SQL'
+    ],
+    tech: ['Spring Boot', 'Apache Kafka', 'Kubernetes', 'Docker', 'PostgreSQL', 'GCP'],
+    techLimit: 6,
+    customExtraCount: 6,
+    hiddenTech: ['Microservices', 'Event-Driven Architecture', 'GKE', 'Cloud SQL', 'Artifact Registry', 'REST APIs', 'Kafka Listeners', 'Zookeeper', 'HPA', 'Distributed Systems'],
+    date: '04/2026',
+    github: 'https://github.com/aryan9867bar/vcc-event-processing-system',
+    video: 'https://drive.google.com/file/d/1jMoUKrzLYcSEvKDZuY9VX6RgfNMCKf2W/view?usp=sharing',
+    live: 'https://github.com/aryan9867bar/vcc-event-processing-system',
   },
   {
     title: 'SnipURL',
@@ -261,6 +285,32 @@ export default function Projects() {
                       </div>
                     </div>
                   )}
+                  {project.title === 'Event Processing System' && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+                      {/* Animated Kafka event pipeline flow */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-orange-500/30 shadow-[0_0_15px_rgba(249,115,22,0.25)]">
+                        <span className="text-[9px] text-cyan-400 font-mono font-bold">Producer</span>
+                        <span className="text-orange-400 font-bold text-xs animate-kafka-flow">➜</span>
+                        <span className="text-[9px] text-primary font-mono font-bold">Kafka</span>
+                        <span className="text-orange-400 font-bold text-xs animate-kafka-flow animation-delay-200">➜</span>
+                        <span className="text-[9px] text-emerald-400 font-mono font-bold">Consumer</span>
+                        <span className="text-orange-400 font-bold text-xs animate-kafka-flow animation-delay-400">➜</span>
+                        <span className="text-[9px] text-red-400 font-mono font-bold">Alert</span>
+                      </div>
+
+                      {/* Throughput Badge */}
+                      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-orange-500/30 text-orange-400 text-[10px] font-mono shadow-[0_0_10px_rgba(249,115,22,0.2)]">
+                        <Activity className="w-3 h-3 animate-pulse" />
+                        <span className="text-[9px] font-bold">85.3K events/sec • 3 brokers</span>
+                      </div>
+
+                      {/* K8s HPA Badge */}
+                      <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-cyan-500/30 text-cyan-400 text-[10px] font-mono shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                        <span className="text-[9px] font-bold">HPA: 3→8 pods</span>
+                      </div>
+                    </div>
+                  )}
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -277,7 +327,7 @@ export default function Projects() {
                       <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full text-white backdrop-blur-sm animate-pulse ${
                         project.isPremium ? 'bg-primary text-black' : 'bg-emerald-500/90'
                       }`}>
-                        {project.title === 'SnipURL' ? <Zap className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
+                        {project.title === 'SnipURL' ? <Zap className="w-3 h-3" /> : project.title === 'Event Processing System' ? <Activity className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
                         {project.badge}
                       </span>
                     )}
@@ -299,6 +349,11 @@ export default function Projects() {
                         <>
                           <Video className="w-4 h-4 relative z-10" />
                           <MessageSquare className="w-4 h-4 relative z-10" />
+                        </>
+                      ) : project.title === 'Event Processing System' ? (
+                        <>
+                          <Server className="w-4 h-4 relative z-10" />
+                          <Activity className="w-4 h-4 relative z-10" />
                         </>
                       ) : (
                         <IconComponent className="w-5 h-5 relative z-10" />

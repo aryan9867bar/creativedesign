@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare, Link, Zap, Server, Activity } from 'lucide-react';
+import { ExternalLink, Github, Code, Code2, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare, Link, Zap, Server, Activity, Users, Terminal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -12,29 +12,33 @@ import quickchatImg from '@/assets/projects/quickchat.png';
 import wavechatImg from '@/assets/projects/wavechat.png';
 import snipurlImg from '@/assets/projects/snipurl.png';
 import eventProcessingImg from '@/assets/projects/event-processing.png';
+import codebridgeImg from '@/assets/projects/codebridge.png';
 
 const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack', 'Backend'];
 
 const projects = [
   {
-    title: 'WaveChat',
+    title: 'CodeBridge',
     category: 'Full Stack',
-    description: 'Scalable real-time random video chat platform inspired by Omegle, built using React, FastAPI, Redis, WebRTC, and WebSockets. Users are randomly matched through a distributed matchmaking system and connected through low-latency peer-to-peer video and chat communication.',
-    icon: Video,
-    image: wavechatImg,
-    badge: 'Live Video Chat',
+    description: 'Real-time collaborative coding platform enabling developers to code together, share cursors, synchronize edits instantly, and execute code directly from the browser. Built with FastAPI, WebSockets, React, Monaco Editor, and low-latency real-time communication architecture.',
+    icon: Code2,
+    image: codebridgeImg,
+    badge: 'Live Coding',
     isPremium: true,
     highlights: [
-      'Random peer-to-peer video matching system',
-      'WebRTC video calling with ICE/STUN/TURN support',
-      'Distributed matching & signalling microservices',
-      'Real-time live chat with WebSocket communication'
+      'Real-time collaborative code editing',
+      'Live cursor tracking and shared selections',
+      'In-browser Python & C++ code execution',
+      'Room-based collaboration with WebSocket synchronization'
     ],
-    tech: ['React', 'TypeScript', 'FastAPI', 'Redis', 'WebSockets', 'Tailwind CSS', 'Vite', 'STOMP'],
-    date: '05/2026',
-    github: 'https://github.com/aryan9867bar/RandomVideoChat',
-    video: 'https://drive.google.com/file/d/1LxzqiAGrpDej7McVTSpZvbo0xEIIdcOp/view?usp=sharing',
-    live: 'https://wavechat-ten.vercel.app',
+    tech: ['React', 'TypeScript', 'FastAPI', 'WebSocket', 'Monaco Editor', 'Docker'],
+    techLimit: 6,
+    customExtraCount: 5,
+    hiddenTech: ['Tailwind CSS', 'Vite', 'Pydantic', 'Uvicorn', 'AsyncIO', 'Render', 'Room Management', 'Real-Time Systems', 'Collaborative Editing'],
+    date: '06/2026',
+    github: 'https://github.com/aryan9867bar/codebridge',
+    video: 'https://drive.google.com/file/d/18k1usVbrB52h8lvyf9LOJlvv1TbrqgOd/view?usp=sharing',
+    live: 'https://codebridge-web.vercel.app/',
   },
   {
     title: 'Event Processing System',
@@ -58,6 +62,26 @@ const projects = [
     github: 'https://github.com/aryan9867bar/vcc-event-processing-system',
     video: 'https://drive.google.com/file/d/1jMoUKrzLYcSEvKDZuY9VX6RgfNMCKf2W/view?usp=sharing',
     live: 'https://github.com/aryan9867bar/vcc-event-processing-system',
+  },
+  {
+    title: 'WaveChat',
+    category: 'Full Stack',
+    description: 'Scalable real-time random video chat platform inspired by Omegle, built using React, FastAPI, Redis, WebRTC, and WebSockets. Users are randomly matched through a distributed matchmaking system and connected through low-latency peer-to-peer video and chat communication.',
+    icon: Video,
+    image: wavechatImg,
+    badge: 'Live Video Chat',
+    isPremium: true,
+    highlights: [
+      'Random peer-to-peer video matching system',
+      'WebRTC video calling with ICE/STUN/TURN support',
+      'Distributed matching & signalling microservices',
+      'Real-time live chat with WebSocket communication'
+    ],
+    tech: ['React', 'TypeScript', 'FastAPI', 'Redis', 'WebSockets', 'Tailwind CSS', 'Vite', 'STOMP'],
+    date: '05/2026',
+    github: 'https://github.com/aryan9867bar/RandomVideoChat',
+    video: 'https://drive.google.com/file/d/1LxzqiAGrpDej7McVTSpZvbo0xEIIdcOp/view?usp=sharing',
+    live: 'https://wavechat-ten.vercel.app',
   },
   {
     title: 'SnipURL',
@@ -311,6 +335,30 @@ export default function Projects() {
                       </div>
                     </div>
                   )}
+                  {project.title === 'CodeBridge' && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+                      {/* Collaborative editing indicator */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-violet-500/30 shadow-[0_0_15px_rgba(139,92,246,0.25)]">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 animate-cursor-blink" />
+                        <span className="text-[9px] text-blue-400 font-mono font-bold">Dev 1</span>
+                        <Code2 className="w-3 h-3 text-violet-400 animate-pulse" />
+                        <span className="text-[9px] text-emerald-400 font-mono font-bold">Dev 2</span>
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-cursor-blink animation-delay-400" />
+                      </div>
+
+                      {/* Live sync badge */}
+                      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-violet-500/30 text-violet-400 text-[10px] font-mono shadow-[0_0_10px_rgba(139,92,246,0.2)]">
+                        <Users className="w-3 h-3 animate-pulse" />
+                        <span className="text-[9px] font-bold">2 collaborators • synced</span>
+                      </div>
+
+                      {/* Code execution badge */}
+                      <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-emerald-500/30 text-emerald-400 text-[10px] font-mono shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                        <Terminal className="w-3 h-3" />
+                        <span className="text-[9px] font-bold">▶ run: OK (0.12s)</span>
+                      </div>
+                    </div>
+                  )}
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -327,7 +375,7 @@ export default function Projects() {
                       <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full text-white backdrop-blur-sm animate-pulse ${
                         project.isPremium ? 'bg-primary text-black' : 'bg-emerald-500/90'
                       }`}>
-                        {project.title === 'SnipURL' ? <Zap className="w-3 h-3" /> : project.title === 'Event Processing System' ? <Activity className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
+                        {project.title === 'SnipURL' ? <Zap className="w-3 h-3" /> : project.title === 'Event Processing System' ? <Activity className="w-3 h-3" /> : project.title === 'CodeBridge' ? <Code2 className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
                         {project.badge}
                       </span>
                     )}
@@ -354,6 +402,11 @@ export default function Projects() {
                         <>
                           <Server className="w-4 h-4 relative z-10" />
                           <Activity className="w-4 h-4 relative z-10" />
+                        </>
+                      ) : project.title === 'CodeBridge' ? (
+                        <>
+                          <Code2 className="w-4 h-4 relative z-10" />
+                          <Users className="w-4 h-4 relative z-10" />
                         </>
                       ) : (
                         <IconComponent className="w-5 h-5 relative z-10" />

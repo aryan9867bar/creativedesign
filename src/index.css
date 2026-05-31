@@ -281,7 +281,21 @@
     }
   }
 
+  @keyframes cursor-blink {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .animate-cursor-blink {
+    animation: cursor-blink 1s infinite;
+  }
+
   .animate-kafka-flow {
     animation: kafka-flow 1.5s infinite ease-in-out;
   }
 }
+

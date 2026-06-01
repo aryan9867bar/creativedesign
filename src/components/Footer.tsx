@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import { FaXTwitter } from 'react-icons/fa6';
+import { SiLeetcode, SiGeeksforgeeks } from 'react-icons/si';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/aryan9867bar', label: 'GitHub' },
@@ -7,6 +9,9 @@ const socialLinks = [
   { icon: Mail, href: 'mailto:aryan123web@gmail.com', label: 'Email' },
   { icon: null, href: 'https://huggingface.co/aryanbaranwal', label: 'HuggingFace', emoji: '🤗' },
   { icon: null, href: 'https://medium.com/@aryanbaranwal', label: 'Medium', text: 'M' },
+  { icon: FaXTwitter, href: 'https://x.com/_aryanbaranwal', label: 'Twitter' },
+  { icon: SiLeetcode, href: 'https://leetcode.com/u/aryanbaranwal/', label: 'LeetCode' },
+  { icon: SiGeeksforgeeks, href: 'https://www.geeksforgeeks.org/profile/aryanbaranwal?tab=activity', label: 'GeeksforGeeks' }
 ];
 
 export default function Footer() {

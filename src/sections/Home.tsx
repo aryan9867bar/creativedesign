@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { FaXTwitter } from 'react-icons/fa6';
+import { SiLeetcode, SiGeeksforgeeks } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import profileImage from '@/assets/profile.jpg';
 import FloatingControls from '@/components/FloatingControls';
@@ -134,6 +136,48 @@ export default function Home() {
                   transition={{ delay: 1.2 }}
                 >
                   M
+                </motion.a>
+                {/* Twitter (X) */}
+                <motion.a
+                  href="https://x.com/_aryanbaranwal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.3 }}
+                >
+                  <FaXTwitter className="w-5 h-5" />
+                </motion.a>
+                {/* LeetCode */}
+                <motion.a
+                  href="https://leetcode.com/u/aryanbaranwal/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.4 }}
+                >
+                  <SiLeetcode className="w-5 h-5" />
+                </motion.a>
+                {/* GeeksforGeeks (GFG) */}
+                <motion.a
+                  href="https://www.geeksforgeeks.org/profile/aryanbaranwal?tab=activity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <SiGeeksforgeeks className="w-5 h-5" />
                 </motion.a>
               </motion.div>
 

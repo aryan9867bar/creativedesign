@@ -81,7 +81,7 @@ export default function Footer() {
             Designed & Developed by Aryan Baranwal
           </p>
           <p className="mt-2 text-sm">
-            © {new Date().getFullYear()} Aryan Baranwal. All rights reserved.
+            © {new Date().getFullYear()} All rights reserved.
           </p>
         </div>
       </div>

@@ -77,11 +77,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-border/50 text-center text-muted-foreground">
-          <p className="flex items-center justify-center gap-2">
-            Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by Aryan Baranwal
+          <p className="font-medium">
+            Designed & Developed by Aryan Baranwal
           </p>
           <p className="mt-2 text-sm">
-            © {new Date().getFullYear()} All rights reserved.
+            © {new Date().getFullYear()} Aryan Baranwal. All rights reserved.
           </p>
         </div>
       </div>

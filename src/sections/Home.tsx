@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiLeetcode, SiGeeksforgeeks } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
-import profileImage from '@/assets/profile.jpg';
+import profileImage from '@/assets/profile.png';
 import FloatingControls from '@/components/FloatingControls';
 
 const socialLinks = [

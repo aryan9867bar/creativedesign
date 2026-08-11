@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Code2, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare, Link, Zap, Server, Activity, Users, Terminal } from 'lucide-react';
+import { ExternalLink, Github, Code, Code2, Brain, Globe, Database, Sparkles, Play, Video, Wifi, MessageSquare, Link, Zap, Server, Activity, Users, Terminal, CloudCog, FlaskConical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
@@ -13,10 +13,60 @@ import wavechatImg from '@/assets/projects/wavechat.png';
 import snipurlImg from '@/assets/projects/snipurl.png';
 import eventProcessingImg from '@/assets/projects/event-processing.png';
 import codebridgeImg from '@/assets/projects/codebridge.png';
+import researchReviewerImg from '@/assets/projects/research-reviewer.png';
+import bankChurnMlopsImg from '@/assets/projects/bank-churn-mlops.png';
 
 const categories = ['All', 'Web Dev', 'AI/ML', 'Full Stack', 'Backend'];
 
 const projects = [
+  {
+    title: 'Bank Churn MLOps',
+    category: 'AI/ML',
+    description: 'Production-ready end-to-end MLOps platform for predicting bank customer churn, featuring automated model training, MLflow experiment tracking, Prefect workflow orchestration, FastAPI model serving, Docker containerization, GCP Cloud Run deployment, CI/CD automation, and model performance monitoring.',
+    icon: CloudCog,
+    image: bankChurnMlopsImg,
+    badge: 'MLOps',
+    isPremium: true,
+    highlights: [
+      'End-to-end automated ML pipeline with Prefect',
+      'MLflow experiment tracking and model registry',
+      'FastAPI + Docker model serving on GCP Cloud Run',
+      'Automated CI/CD with GitHub Actions and model monitoring'
+    ],
+    tech: ['Python', 'MLflow', 'Prefect', 'FastAPI', 'Docker', 'GCP'],
+    techLimit: 6,
+    customExtraCount: 6,
+    hiddenTech: ['Google Cloud Run', 'Artifact Registry', 'GitHub Actions', 'Machine Learning', 'Model Monitoring', 'CI/CD', 'Model Registry', 'Cloud Functions', 'Pytest', 'Pandas', 'Scikit-learn', 'Uvicorn'],
+    date: '08/2026',
+    github: 'https://github.com/aryan9867bar/bank-churn-mlops',
+    video: 'https://drive.google.com/file/d/15zHhRE8-ruy6VLF4VxfvCqV6G3dvRrTJ/view?usp=sharing',
+    live: 'https://github.com/aryan9867bar/bank-churn-mlops',
+    liveLabel: 'API',
+  },
+  {
+    title: 'Multi-Agent Research Paper Reviewer',
+    category: 'AI/ML',
+    description: 'End-to-end multi-agent research paper review platform powered by MCP and LangGraph orchestration. Automates paper retrieval, PDF extraction, review generation, quality validation, and student-friendly summarization using specialized AI agents.',
+    icon: Brain,
+    image: researchReviewerImg,
+    badge: 'Agentic AI',
+    isPremium: true,
+
+    highlights: [
+      'Reader, Meta-Reviewer & Critic agents coordinated via LangGraph',
+      'ArXiv API integration with automatic PDF extraction & parsing',
+      'Student-friendly summaries with strengths, weaknesses & recommendations',
+      'Interactive Streamlit dashboard with GPU-accelerated LLM inference'
+    ],
+    tech: ['Python', 'LangGraph', 'FastMCP', 'Streamlit', 'Ollama', 'Docker'],
+    techLimit: 6,
+    customExtraCount: 9,
+    hiddenTech: ['ArXiv API', 'PyMuPDF', 'Pydantic', 'AsyncIO', 'LLMs', 'GPU Acceleration', 'Multi-Agent Systems', 'MCP Protocol', 'LangChain', 'Prompt Engineering', 'PDF Processing', 'HuggingFace', 'OpenAI API', 'Evaluation Framework', 'RAG'],
+    date: '07/2026',
+    github: 'https://github.com/aryan9867bar/Multi-Agent-Research-Paper-Reviewer',
+    video: 'https://drive.google.com/file/d/1QgpzT81S1Ze-_NX6oTzsujxeNDS9qUsb/view?usp=sharing',
+    live: 'https://multi-agent-research-paper-reviewer.streamlit.app/',
+  },
   {
     title: 'CodeBridge',
     category: 'Full Stack',
@@ -227,8 +277,8 @@ const projects = [
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
+  const filteredProjects = activeCategory === 'All'
+    ? projects
     : projects.filter(p => p.category === activeCategory);
 
   return (
@@ -252,11 +302,10 @@ export default function Projects() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
-                }`}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
+                  }`}
               >
                 {category}
               </button>
@@ -275,11 +324,10 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 layout
-                className={`glass-card rounded-2xl overflow-hidden hover-glow group relative ${
-                  project.isPremium 
-                    ? 'border-2 border-primary/50 shadow-[0_0_25px_rgba(234,179,8,0.25)]' 
-                    : ''
-                }`}
+                className={`glass-card rounded-2xl overflow-hidden hover-glow group relative ${project.isPremium
+                  ? 'border-2 border-primary/50 shadow-[0_0_25px_rgba(234,179,8,0.25)]'
+                  : ''
+                  }`}
                 style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 {/* Project Image */}
@@ -359,23 +407,78 @@ export default function Projects() {
                       </div>
                     </div>
                   )}
-                  <img 
-                    src={project.image} 
+                  {project.title === 'Multi-Agent Research Paper Reviewer' && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+                      {/* Animated Agent Orchestration Pipeline */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-violet-500/30 shadow-[0_0_15px_rgba(139,92,246,0.25)]">
+                        <span className="text-[9px] text-cyan-400 font-mono font-bold">ArXiv</span>
+                        <span className="text-violet-400 font-bold text-xs animate-agent-flow">➜</span>
+                        <span className="text-[9px] text-blue-400 font-mono font-bold">Reader</span>
+                        <span className="text-violet-400 font-bold text-xs animate-agent-flow animation-delay-200">➜</span>
+                        <span className="text-[9px] text-primary font-mono font-bold">Reviewer</span>
+                        <span className="text-violet-400 font-bold text-xs animate-agent-flow animation-delay-400">➜</span>
+                        <span className="text-[9px] text-rose-400 font-mono font-bold">Critic</span>
+                        <span className="text-violet-400 font-bold text-xs animate-agent-flow animation-delay-600">➜</span>
+                        <span className="text-[9px] text-emerald-400 font-mono font-bold">Summary</span>
+                      </div>
+
+                      {/* LangGraph Orchestration Badge */}
+                      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-violet-500/30 text-violet-400 text-[10px] font-mono shadow-[0_0_10px_rgba(139,92,246,0.2)]">
+                        <Brain className="w-3 h-3 animate-pulse" />
+                        <span className="text-[9px] font-bold">LangGraph • 4 Agents</span>
+                      </div>
+
+                      {/* MCP Protocol Badge */}
+                      <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-cyan-500/30 text-cyan-400 text-[10px] font-mono shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                        <span className="text-[9px] font-bold">MCP Protocol</span>
+                      </div>
+                    </div>
+                  )}
+                  {project.title === 'Bank Churn MLOps' && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+                      {/* Animated MLOps pipeline flow */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.25)]">
+                        <span className="text-[9px] text-blue-400 font-mono font-bold">Data</span>
+                        <span className="text-cyan-400 font-bold text-xs animate-mlops-flow">➜</span>
+                        <span className="text-[9px] text-violet-400 font-mono font-bold">Train</span>
+                        <span className="text-cyan-400 font-bold text-xs animate-mlops-flow animation-delay-200">➜</span>
+                        <span className="text-[9px] text-primary font-mono font-bold">MLflow</span>
+                        <span className="text-cyan-400 font-bold text-xs animate-mlops-flow animation-delay-400">➜</span>
+                        <span className="text-[9px] text-sky-400 font-mono font-bold">Docker</span>
+                        <span className="text-cyan-400 font-bold text-xs animate-mlops-flow animation-delay-600">➜</span>
+                        <span className="text-[9px] text-emerald-400 font-mono font-bold">Cloud Run</span>
+                      </div>
+
+                      {/* Model Monitoring Badge */}
+                      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-violet-500/30 text-violet-400 text-[10px] font-mono shadow-[0_0_10px_rgba(139,92,246,0.2)]">
+                        <Activity className="w-3 h-3 animate-pulse" />
+                        <span className="text-[9px] font-bold">Model Monitoring • Live</span>
+                      </div>
+
+                      {/* CI/CD Badge */}
+                      <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-emerald-500/30 text-emerald-400 text-[10px] font-mono shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                        <span className="text-[9px] font-bold">CI/CD: Deployed ✓</span>
+                      </div>
+                    </div>
+                  )}
+                  <img
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                  
+
                   {/* Category Badge on Image */}
                   <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2">
                     <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/90 text-primary-foreground backdrop-blur-sm">
                       {project.category}
                     </span>
                     {project.badge && (
-                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full text-white backdrop-blur-sm animate-pulse ${
-                        project.isPremium ? 'bg-primary text-black' : 'bg-emerald-500/90'
-                      }`}>
-                        {project.title === 'SnipURL' ? <Zap className="w-3 h-3" /> : project.title === 'Event Processing System' ? <Activity className="w-3 h-3" /> : project.title === 'CodeBridge' ? <Code2 className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold rounded-full text-white backdrop-blur-sm animate-pulse ${project.isPremium ? 'bg-primary text-black' : 'bg-emerald-500/90'
+                        }`}>
+                        {project.title === 'SnipURL' ? <Zap className="w-3 h-3" /> : project.title === 'Event Processing System' ? <Activity className="w-3 h-3" /> : project.title === 'CodeBridge' ? <Code2 className="w-3 h-3" /> : project.title === 'Bank Churn MLOps' ? <FlaskConical className="w-3 h-3" /> : project.title === 'Multi-Agent Research Paper Reviewer' ? <Brain className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
                         {project.badge}
                       </span>
                     )}
@@ -386,7 +489,7 @@ export default function Projects() {
                       </span>
                     )}
                   </div>
-                  
+
                   {/* Icon */}
                   <div className="absolute bottom-4 right-4 p-2 rounded-lg bg-background/80 backdrop-blur-sm text-primary">
                     <div className="relative flex items-center gap-1">
@@ -408,13 +511,18 @@ export default function Projects() {
                           <Code2 className="w-4 h-4 relative z-10" />
                           <Users className="w-4 h-4 relative z-10" />
                         </>
+                      ) : project.title === 'Bank Churn MLOps' ? (
+                        <>
+                          <CloudCog className="w-4 h-4 relative z-10" />
+                          <Activity className="w-4 h-4 relative z-10" />
+                        </>
                       ) : (
                         <IconComponent className="w-5 h-5 relative z-10" />
                       )}
                     </div>
                   </div>
                 </div>
- 
+
                 <div className="p-6">
                   {/* Title and Date */}
                   <div className="flex items-start justify-between mb-3">
@@ -425,12 +533,12 @@ export default function Projects() {
                       {project.date}
                     </span>
                   </div>
- 
+
                   {/* Description */}
                   <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
                     {project.description}
                   </p>
- 
+
                   {/* Key Highlights */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {project.highlights.map((highlight, i) => (
@@ -440,7 +548,7 @@ export default function Projects() {
                       </div>
                     ))}
                   </div>
- 
+
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-5">
                     {project.tech.slice(0, project.techLimit || 4).map((tech) => (
@@ -449,7 +557,7 @@ export default function Projects() {
                       </span>
                     ))}
                     {project.tech.length > (project.techLimit || 4) && (
-                      <span 
+                      <span
                         className="skill-badge text-xs cursor-help"
                         title={project.hiddenTech ? project.hiddenTech.join(', ') : project.tech.slice(project.techLimit || 4).join(', ')}
                       >
@@ -485,7 +593,7 @@ export default function Projects() {
                       className="flex items-center gap-1.5 flex-1 text-xs"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      Live Demo
+                      {(project as any).liveLabel || 'Live Demo'}
                     </Button>
                   </div>
                 </div>

@@ -297,5 +297,45 @@
   .animate-kafka-flow {
     animation: kafka-flow 1.5s infinite ease-in-out;
   }
+
+  @keyframes mlops-flow {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+      text-shadow: 0 0 8px rgba(6, 182, 212, 0.8);
+    }
+    100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+  }
+
+  .animate-mlops-flow {
+    animation: mlops-flow 1.5s infinite ease-in-out;
+  }
+
+  @keyframes agent-flow {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+      text-shadow: 0 0 8px rgba(139, 92, 246, 0.8);
+    }
+    100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+  }
+
+  .animate-agent-flow {
+    animation: agent-flow 1.5s infinite ease-in-out;
+  }
 }
 
